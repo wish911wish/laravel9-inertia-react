@@ -1,7 +1,18 @@
 import React from 'react';
 import { Link, Head } from '@inertiajs/inertia-react';
+import PageProps from '@/Types/pageProps'
+import { usePage } from '@inertiajs/inertia-react'
+import route from 'ziggy-js';
 
-export default function Welcome(props) {
+interface WelcomePage {
+    props: {
+        laravelVersion: string
+        phpVersion: string
+    }
+}
+  
+const Welcome: React.FC = () => {
+    const { props } = usePage<PageProps & WelcomePage>()
     return (
         <>
             <Head title="Welcome" />
@@ -255,3 +266,6 @@ export default function Welcome(props) {
         </>
     );
 }
+
+
+export default Welcome
